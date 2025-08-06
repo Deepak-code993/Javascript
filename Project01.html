@@ -1,0 +1,158 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .con{
+        width: 75vw;
+height:40vh;
+border: 2px solid black;
+position:absolute;
+left: 5vw;
+top: 10vh;
+gap: 7vw;
+display: flex;
+align-items: center;
+padding-right: 5vw;
+padding-left: 5vw;
+    }
+    .box{
+        height: 150px;
+        width: 150px;
+        border: 2px solid green;
+        color: WHITE;
+        font-size: 1.5REM;
+        align-items: center;
+        
+    }
+</style>
+<body id="bb">
+<div class="con">
+    <div class="box 1" style="background-color:green;">CLICK</div>
+    <div class="box 2" style="background-color:blue;">HERE</div>
+    <div class="box 3" style="background-color:red;">TO</div>
+    <div class="box 4" style="background-color:purple;">CHANGE</div>
+    <div class="box 5" style="background-color:white;">COLOUR</div>
+</div>
+    <script>
+        const collection=document.getElementsByClassName("box")
+        const array=Array.from(collection)
+
+        array[0].addEventListener("click",()=>{
+            document.getElementById("bb").style.backgroundColor="green"
+            array[0].style.border="2px solid black"
+        })
+
+        array[1].addEventListener("click",()=>{
+            document.getElementById("bb").style.backgroundColor="blue"
+            array[1].style.border="2px solid black"
+        })
+
+        array[2].addEventListener("click",()=>{
+            document.getElementById("bb").style.backgroundColor="red"
+            array[2].style.border="2px solid black"
+        })
+
+        array[3].addEventListener("click",()=>{
+            document.getElementById("bb").style.backgroundColor="purple"
+            array[3].style.border="2px solid black"
+        })
+
+        array[4].addEventListener("click",()=>{
+            document.getElementById("bb").style.backgroundColor="white"
+            array[4].style.border="2px solid black"
+        })
+            
+    </script>
+
+</body>
+</html>-->
+
+<!--Same program but ina effeciant way-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button{
+        height: 150px;
+        width: 150px;
+    }
+</style>
+<body id="body"> 
+
+    <button id="red" style="background-color:red;">CLICK</button> 
+    <button id="blue" style="background-color:blue ;">HERE</button> 
+    <button id="green" style="background-color:green ;">TO</button> 
+    <button id="yellow" style="background-color:yellow ;">CHANGE</button> 
+    <button id="white" style="background-color:white;">COLOUR</button> 
+<script>
+buttons=document.querySelectorAll("button")
+body=document.getElementById("body")
+buttons.forEach(element => {
+    element.addEventListener("click",(e)=>{
+if (e.target.id==='red')
+{
+    body.style.backgroundColor=e.target.id
+}
+
+if (e.target.id==='blue')
+{
+    body.style.backgroundColor=e.target.id
+}
+
+if (e.target.id==='green')
+{
+    body.style.backgroundColor=e.target.id
+}
+
+if (e.target.id==='yellow')
+{
+    body.style.backgroundColor=e.target.id
+}
+    
+
+    if (e.target.id==='white')
+{
+    body.style.backgroundColor=e.target.id
+}
+    })    
+});
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
