@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        background-color: #48b90b;
+        display: flex;
+        align-items: center; 
+        flex-direction: column;
+        justify-content: center;
+        min-height: 98vh;
+    }
+    .con{
+        height: 40vh;
+        width: 40vw; 
+        background-color: #01e969;
+        display:flex;
+         align-items: center;
+       flex-direction: column;
+        justify-content: center;
+
+    }
+    #clock{
+        height: 9vh;
+        width: 15vw;
+        background-color:rgba(232, 93, 6, 0.694);
+        font-size: 2rem;
+    
+    }
+    #time{
+        position: relative;
+        bottom: 2.3vh;
+        left: 2.2vw;
+    }
+
+
+
+</style> 
+<div class="con">
+    <h1>LOCAL TIME</h1>
+    <div id="clock"><p id="time"></p></div>
+</div>
+<body>
+    <script>
+        function time(){ 
+const now=new Date()
+const hour=now.getHours()
+const min=now.getMinutes()
+const sec=now.getSeconds()
+const msec=now.getMilliseconds()
+const curenttime=`${hour}:${min}:${sec}:${msec}`
+document.getElementById("time").innerText=curenttime
+}
+
+
+setInterval(time,100)
+
+
+
+    </script>
+</body>
+</html>
