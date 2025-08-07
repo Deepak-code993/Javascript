@@ -1,2 +1,2 @@
 # js_project_-1
-javascript project
+Begginer level javascript projects
