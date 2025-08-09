@@ -138,7 +138,7 @@
 </head>
 <body>
     <div class="msg"><marquee>WELCOME TO THE GUESSING GAME</marquee></div>
-    <a href="#">How to play</a>
+    <a href="#" style="font-weight: bolder; color: darkred; font-size: 1.7rem;">How to play</a>
 
     <form action="javascript:void(0);">
         <div class="innerfeild">
@@ -173,7 +173,7 @@
         play.addEventListener("click", () => {
             count++;
             const user_input = parseInt(bar.value);
-            const ran_num = Math.ceil(Math.random() * (4 - 1) + 1);
+            const ran_num = Math.ceil(Math.random() * (11 - 1) + 1);
 
             if (user_input === ran_num) {
                 mainresult.innerText = "The guess is right";
