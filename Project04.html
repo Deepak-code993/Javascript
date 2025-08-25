@@ -3,200 +3,164 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guessing Game</title>
-    <style>
-        body {
-            background-image: url("https://wallpapercave.com/wp/wp12751021.jpg");
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
+    <title>Document</title>
+</head>
+<style>
+body{
+    background-image: url("https://wallpapercave.com/wp/wp12751021.jpg");
 
-        .msg {
-            font-size: 8vw;
-            color: rgba(0, 4, 8, 0.689);
-            text-shadow: 2px 2px 4px white;
-            box-shadow: 2px 4px 12px;
-            text-align: center;
-            padding: 1rem;
-        }
+}
+    .innerfeild{
+        display: flex;
+        gap: 10vw;
+        font-size: 2em;
+        padding-top: 10px;
+        padding-left: 20px;
+    
+    }
+    .result{
+        
+        margin-left: 15vw;
+        font-size: 2em;
+    
+    }
+    
+.scores{
+}
+    .scores{
+        display: grid;
+        font-size: 1em;
+        position: relative;
+        top: 50vh;
+        align-self: baseline;
+             background-color:rgba(3, 97, 239, 0.406);
+             box-shadow: 4px 4px 16px blue,inset 20px 20px 20px rgb(97, 1, 232,0.7); 
 
-        a {
-            display: block;
-            text-align: center;
-            font-size: 1.2rem;
-            color: black;
-            margin-bottom: 1rem;
-        }
+             
+      
+    }
 
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 1rem;
-            margin: 2rem auto;
-            width: 90%;
-            max-width: 800px;
+    #points-me,#points-bot{
+        font-size: 1em;
+    }    
+    
+    .display-scores{
+        display: flex;
+        align-items: center;
+        gap:5vw
         }
-
-        .innerfeild {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 1rem;
-            justify-content: center;
-            width: 100%;
-        }
-
-        #area {
-            flex: 1 1 200px;
-            min-width: 150px;
-            padding: 0.6rem;
-            color: red;
-            border-radius: 10px;
-            font-weight: bold;
-            background-color: rgba(3, 97, 239, 0.406);
-            font-size: 1.2rem;
-            border: none;
-            outline: none;
-            text-align: center;
-        }
-
-        button {
-            flex: 1 1 100px;
-            padding: 0.6rem;
-            border-radius: 10px;
-            font-size: 1.2rem;
-            background-color: rgba(3, 97, 239, 0.406);
-            border: none;
-            cursor: pointer;
+        #area{
+            height:9vh;
+            width:50vw;
+            color:red;
+            border-radius: 15%;
+            font-weight: bolder;
+            background-color:rgba(3, 97, 239, 0.406);
+            font-size: 1.5rem;
             transition: box-shadow 0.5s ease-in-out;
         }
-
-        button:hover {
+        #area:hover{
             box-shadow: 4px 4px 16px blue;
         }
-
-        #mainresult {
-            text-align: center;
-            font-weight: bold;
+        button{
+            width: 10vw;
+            border-radius: 15%;
             font-size: 1.5rem;
-            color: red;
-            text-shadow: 1px 2px 1px rgba(6, 175, 243, 0.712);
-            background-color: rgba(12, 12, 184, 0.5);
-            padding: 0.5rem;
-            border-radius: 5px;
-            margin-top: 1rem;
-        }
+            overflow: auto;
+                    background-color:rgba(3, 97, 239, 0.406);
+                   transition: box-shadow 0.5s ease-in-out;
+             } 
+             button:hover{
+                 box-shadow: 4px 4px 16px blue;   
+                 text-shadow: 9px 8px 1px rgba(156, 137, 143, 0.5);
+             }
+#mainresult{
+    position: relative;
+    top: 15vh;
+    left:45%;
+    font-weight: bolder;
+    margin: 0;
+    padding: 0;
+    font-size: 2rem;
+    color: red;
+    text-shadow: 1px 8px 1px rgba(6, 175, 243, 0.712);
+    background-color:rgb(12, 12, 184,0.5);
+}      
+form{
+    position: relative;
+    top: 20vh;
+}
+.msg{
+    font-size: 10rem;
+    color:rgba(0, 4, 8, 0.689);
+    text-shadow: 2px 2px 4px white;
+    box-shadow: 2px 4px 12px ;
+    
+}      
 
-        .scores {
-            display: grid;
-            gap: 1rem;
-            background-color: rgba(3, 97, 239, 0.406);
-            box-shadow: 4px 4px 16px blue, inset 5px 5px 10px rgba(97, 1, 232, 0.7);
-            padding: 1rem;
-            max-width: 500px;
-            margin: 2rem auto;
-            border-radius: 10px;
-        }
-
-        .display-scores {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 1.2rem;
-            color: white;
-        }
-
-        .display-scores div {
-            color: red;
-            font-weight: bold;
-        }
-
-        @media (max-width: 768px) {
-            .msg {
-                font-size: 6vw;
-            }
-            button, #area {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .msg {
-                font-size: 5vw;
-            }
-            .scores {
-                font-size: 1rem;
-            }
-            .display-scores {
-                flex-direction: column;
-                align-items: flex-start;
-            }
-        }
-    </style>
-</head>
+</style>
 <body>
-    <div class="msg"><marquee>WELCOME TO THE GUESSING GAME</marquee></div>
-    <a href="https://deepak-code993.github.io/Javascript/Rules.html" style="font-weight: bolder; color: darkred; font-size: 1.7rem;">How to play</a>
+    <div class="msg"> <marquee behavior=""  direction="">WELCOME TO THE GUESSING GAME</marquee></div>
+    <span style="font-size: 2rem;color: black;"><a href="">How to play</a></span>
+    <div class="feild">
+<form action="javascript:void(0);">
+    <div class="innerfeild">  <input type="text" name="" id="area" placeholder="ENTER YOUR GUESS"> <button type="button" id="clear">Clear</button> <button type="button" id="play">Click</button> <button type="button" id="view">View Scores</button>
+ </div>
+ <span id="mainresult">---</span>
+</form>
 
-    <form action="javascript:void(0);">
-        <div class="innerfeild">
-            <input type="text" id="area" placeholder="ENTER YOUR GUESS">
-            <button type="button" id="clear">Clear</button>
-            <button type="button" id="play">Click</button>
-            <button type="button" id="view">View Scores</button>
-        </div>
-        <span id="mainresult">---</span>
-    </form>
-
-    <div class="scores">
-        <div class="display-scores"><p>ROUNDS YOU PLAYED:</p> <div id="ROUNDS">---</div></div>
-        <div class="display-scores"><p>YOUR SCORE:</p> <div id="points-me">---</div></div>
-        <div class="display-scores"><p>BOT SCORE:</p> <div id="points-bot">---</div></div>
+<div class="scores">
+  <div class="display-scores"><span class="result"><p style="font-size: 3rem; font-weight: bolder;color: rgb(168, 199, 227);font-family: Verdana, Geneva, Tahoma, sans-serif;">ROUNDS YOU PLAYED: </p></span> <div id="ROUNDS" style="font-size: 2.5rem; color: red;">---</div></div>
+  <div class="display-scores"><span><p class="result" style="color: rgb(255, 255, 255)">YOUR SCORE: </p></span>  <div id="points-me" style="font-size: 2.5rem; color: red;">---</div></div>
+  <div class="display-scores"><span><p class="result" style="color: rgb(255, 255, 255)">SBOT SCORE:</p></span><div id="points-bot" style="font-size: 2.5rem; color: red;">---</div></div>
+</div>
     </div>
 
     <script>
-        const bar = document.getElementById("area");
-        const play = document.getElementById("play");
-        const scores = document.getElementById("view");
-        const mainresult = document.getElementById("mainresult");
-        const rounds = document.getElementById("ROUNDS");
-        const mypoints = document.getElementById("points-me");
-        const botpoints = document.getElementById("points-bot");
-        const clearBtn = document.getElementById("clear");
-
-        let count = 0;
-        let myscore = 0;
-        let compscore = 0;
-
-        play.addEventListener("click", () => {
-            count++;
-            const user_input = parseInt(bar.value);
-            const ran_num = Math.ceil(Math.random() * (11 - 1) + 1);
-
-            if (user_input === ran_num) {
-                mainresult.innerText = "The guess is right";
-                myscore++;
-            } else {
-                mainresult.innerText = "The guess is wrong";
-                compscore++;
+        bar=document.getElementById("area")
+        play=document.getElementById("play")
+        scores=document.getElementById("view")
+        mainresult=document.getElementById("mainresult")
+        rounds=document.getElementById("ROUNDS")
+        mypoints=document.getElementById("points-me")
+        botpoints=document.getElementById("points-bot")
+        clear=document.getElementById("clear")
+let count=0
+let myscore=0
+let compscore=0
+        play.addEventListener("click",()=>{
+         count++
+            user_input=bar.value
+            ran_num=Math.ceil(Math.random()*(4-1)+1)
+            if(user_input==ran_num)
+            {
+                mainresult.innerText="The guess is right"
+                myscore++
+            
             }
-            rounds.innerText = count;
-        });
+            else{
+                mainresult.innerText="The guess is wrong"
+                compscore++
+            }
+              rounds.innerHTML=count
+              scores.addEventListener("click",()=>{
+                mypoints.innerText=myscore
+                botpoints.innerText=compscore
+              })
+              clear.addEventListener("click",()=>{
+                mainresult.innerText=" "
+                rounds.innerHTML=" "
+                mypoints.innerText=" "
+                botpoints.innerText=" "
+                bar.innerText=" "
 
-        scores.addEventListener("click", () => {
-            mypoints.innerText = myscore;
-            botpoints.innerText = compscore;
-        });
+              })
 
-        clearBtn.addEventListener("click", () => {
-            mainresult.innerText = "---";
-            rounds.innerText = "---";
-            mypoints.innerText = "---";
-            botpoints.innerText = "---";
-            bar.value = "";
-        });
+
+        })
+     
+
+        
     </script>
 </body>
 </html>
