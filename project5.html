@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Worldwide Weather Dashboard</title>
+   <style>
+      body {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         height: 100vh;
+         margin: 0;
+         font-size: 1.2em;
+         background-image: url("https://wallpapercave.com/wp/wp12025774.jpg");  
+         background-repeat: no-repeat;
+         background-size: cover;
+         background-position: center;
+        
+         padding: 1rem;
+      }
+
+      .input {
+         padding: 2rem;
+         width: 90%;
+         max-width: 600px;
+         display: flex;
+         flex-direction: column;
+         margin-bottom: 2rem;
+         gap: 1rem;
+         align-items: center;
+         justify-content: center;
+         text-align: center;
+      }
+
+      .input p {
+         font-size: 2rem;
+         font-weight: bolder;
+         color: #0b0240;
+         margin: 0 0 1rem 0;
+      }
+
+      #button, #weather {
+         height: 50px;
+         width: 100%;
+         max-width: 400px;
+         font-size: 1em;
+         border-radius: 50px;
+         border: none;
+         box-sizing: border-box;
+         padding: 0 15px;
+      }
+
+      #button {
+         background-color: #2ba8fb;
+         color: #ffffff;
+         font-weight: bold;
+         transition: all 0.5s;
+         cursor: pointer;
+      }
+
+      #button:hover {
+         background-color: #6fc5ff;
+         box-shadow: 0 0 20px #6fc5ff50;
+         transform: scale(1.05);
+      }
+
+      #button:active {
+         background-color: rgba(71, 1, 67, 0.475);
+         transform: scale(0.98);
+      }
+
+      #weather {
+         background-color: rgba(236, 173, 37, 0.498);
+         color: rgb(69, 69, 240);
+         text-align: center;
+      }
+
+      #weather:hover {
+         box-shadow: 0 0 20px #6fc5ff50;
+      }
+
+      #Details {
+         width: 95%;
+         max-width: 900px;
+         min-height: 250px;
+         background-color: rgba(71, 1, 67, 0.475);
+         box-shadow: 0 0 0 10px rgba(236, 173, 37, 0.498);
+         border-radius: 30px;
+         padding: 1.5rem;
+         display: grid;
+         gap: 15px;
+         font-size: 1.5rem;
+         color:rgb(0, 195, 255);
+         font-weight: bolder;
+         overflow: auto;
+         word-wrap: break-word;
+      }
+
+    
+      @media (max-width: 768px) {
+         body {
+            font-size: 1em;
+            padding: 0.5rem;
+         }
+
+         .input p {
+            font-size: 2rem;
+         }
+
+         #Details {
+            font-size: 0.9rem;
+            border-radius: 20px;
+            box-shadow: 0 0 0 5px rgba(236, 173, 37, 0.498);
+         }
+      }
+
+      @media (max-width: 480px) {
+         .input p {
+            font-size: 1.2rem;
+         }
+         #button, #weather {
+            max-width: 100%;
+            height: 45px;
+            font-size: 0.9rem;
+         }
+         #Details {
+            font-size: 0.8rem;
+            padding: 1rem;
+         }
+      }
+   </style>
+</head>
+<body>
+   <div class="input">
+      <p><marquee behavior="" direction="">Worldwide Weather Dashboard</marquee></p>
+      <input type="text" id="weather" placeholder="Enter the country/region"> 
+      <button id="button" type="button">CLICK</button>
+   </div>   
+
+   <div id="Details">
+      <span id="country"></span>
+      <span id="region"></span>
+      <span id="localtime"></span>
+      <span id="temp-c"></span>
+      <span id="temp-f"></span>
+      <span id="windkmph"></span>
+      <span id="windir"></span>
+      <span id="Humidity"></span>
+      <span id="cloud"></span>
+      <span id="feelslike"></span>
+      <span id="condition"></span>
+   </div>
+
+   <script>
+      document.getElementById("button").addEventListener("click", () => {   
+         document.body.style.backgroundImage = 'url("https://wallpapercave.com/wp/wp7826742.jpg")';
+
+         const apikey = "e272995c9e6641ec9ca120624251508";
+         const location = document.getElementById("weather").value;
+
+         fetch(`https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${location}`)
+         .then(res => res.json())
+         .then(data => {
+            document.getElementById("country").innerHTML = `Country : ${data.location.country}`;
+            document.getElementById("region").innerHTML = `Region : ${data.location.name}`;
+            document.getElementById("localtime").innerHTML = `Local-Time : ${data.location.localtime}`;
+            document.getElementById("temp-c").innerHTML = `Temperature (°C) : ${data.current.temp_c}`;
+            document.getElementById("temp-f").innerHTML = `Temperature (°F) : ${data.current.temp_f}`;
+            document.getElementById("windkmph").innerHTML = `Wind (km/h): ${data.current.wind_kph}`;
+            document.getElementById("windir").innerHTML = `Wind Direction: ${data.current.wind_dir}`;
+            document.getElementById("Humidity").innerHTML = `Humidity: ${data.current.humidity}`;
+            document.getElementById("cloud").innerHTML = `Cloud: ${data.current.cloud}`;
+            document.getElementById("feelslike").innerHTML = `Feels Like (°C): ${data.current.feelslike_c}`;
+            document.getElementById("condition").innerHTML = `Condition: ${data.current.condition.text}`;
+         })
+         .catch(error => {
+            document.getElementById("Details").innerHTML = `Error: ${error}`;
+         });
+      });
+   </script>
+</body>
+</html>
