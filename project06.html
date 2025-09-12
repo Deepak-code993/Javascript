@@ -1,261 +1,211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Know Your Movie</title>
+  <style>
     * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border-radius: 25%;
-  color: aliceblue;
-}
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      color: aliceblue;
+    }
 
-body {
-  display: flex;
-  flex-direction: column; 
-  align-items: center;    
-  min-height: 100vh;
-  background-color: #f5f5f5;
-  background-image:url("https://wallpapercave.com/wp/wp8994432.jpg") ;
-   background-repeat: no-repeat;
-         background-size: cover;
-         background-position: center;
-}
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background: url("https://wallpapercave.com/wp/wp8994432.jpg") no-repeat center center/cover;
+      padding: 1rem;
+    }
 
-.sbox {
-  margin-top: 50px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+    #line {
+      margin-top: 1rem;
+      padding: 0.5rem;
+      width: 100%;
+      text-align: center;
+      background-color: rgba(61, 57, 57, 0.6);
+      text-shadow: 2px 2px 10px rgb(255, 136, 0);
+    }
 
-#text {
-  height: 50px;
-  width: 370px;
-  font-size: 1.5rem;
-  transition: all 1s;
-  background-color: unset;
-  border: 1px solid #ccc;
-  padding: 5px;
-}
+    h1 {
+      font-size: clamp(1.5rem, 5vw, 2.5rem);
+    }
 
-#text:focus {
-  background-color: rgba(255, 153, 0, 0.687);
-}
+    .sbox {
+      margin-top: 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1rem;
+      width: 100%;
+      max-width: 500px;
+    }
 
-#btn {
-  width: 270px;
-  height: 35px;
-  margin-top: 15px;
-  background-color: unset;
-  transition: all 0.7s;
-  border: 1px solid #ccc;
-  cursor: pointer;
-    text-shadow:8px 8px 5px rgb(255, 136, 0);
-    font-size: 1.4rem;
-  
-}
+    #text {
+      width: 100%;
+      height: 50px;
+      font-size: 1.2rem;
+      padding: 0.5rem;
+      border: 1px solid #ccc;
+      background: transparent;
+      transition: all 0.3s;
+    }
 
-#btn:active {
-  transform: scale(0.5);
-}
+    #text:focus {
+      background-color: rgba(255, 153, 0, 0.687);
+    }
 
-#box {
-  width: 90%;
-  min-height: 420px;
-  margin: 40px auto; 
-  background-color: rgba(75, 68, 59, 0.687);
-  color: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  display:flex;
-  flex-direction: row;
-  gap: 10px;
-}
+    #btn {
+      width: 60%;
+      height: 40px;
+      font-size: 1.1rem;
+      background: transparent;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: all 0.3s;
+      text-shadow: 2px 2px 5px rgb(255, 136, 0);
+      border-radius: 8px;
+    }
 
+    #btn:active {
+      transform: scale(0.9);
+    }
 
+    #box {
+      width: 100%;
+      max-width: 1000px;
+      min-height: 300px;
+      margin: 2rem auto;
+      background-color: rgba(75, 68, 59, 0.687);
+      color: #fff;
+      padding: 1rem;
+      border-radius: 10px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
 
-#poster-ratings {
-  
-  text-align: center;
-  width:70%;
-  padding: 10px;
-  display: flex; 
-  flex-direction: column;
-   gap: 10px;
-   font-size: 1.5rem;
-    background-color: rgba(75, 68, 59, 0.687);
-    text-shadow: 2px 2px 4px, in;
-    margin-bottom: 10px;
-}
-#line{
-  margin-top: 20px;
-  width: 25%;
-  background-color: rgba(61, 57, 57, 0.596);
-  text-shadow:2px 2px 10px rgb(255, 136, 0);;
+    #content {
+      flex: 1 1 300px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      font-size: 1rem;
+    }
 
-}
-#content{
-  width:100%;
-   display: flex;
-    flex-direction: column;
-     gap: 10px;
-  font-size: 1.2rem;
-}
-img{
-  border-radius: 0%;
-}
+    #wallpaper img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 5px;
+    }
 
-@media (max-width:480px)
-{
-  #box{
-    flex-direction: column-reverse;
-  
-  }
-}
-@media (max-width:360px)
-{
-  img{
-    height: 300px;
-    width: 282px; 
-  }
-   #line{
-    width: 345px;
-  }
-  #text{
-width: 300px;
-  }
-  #btn{
-    width: 150px;
-    height: 35px;
-  }
-    #poster-ratings{
-    padding: 20px;
-    
-}
-}
-@media (max-width:300px)
-{
-  img{
-    height: 300px;
-    width: 227px; 
-  }
-  #poster-ratings{
-    padding: 15px;
-  }
+    #poster-ratings {
+      width: 100%;
+      max-width: 700px;
+      margin: 1rem auto;
+      padding: 1rem;
+      font-size: 1.2rem;
+      text-align: center;
+      background-color: rgba(75, 68, 59, 0.687);
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
 
-   #line{
-    width: 360px;
+    @media (max-width: 768px) {
+      #box {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+      #btn {
+        width: 80%;
+      }
+    }
 
-  }
-  #text{
-margin-left: 32px;
-
-  }
-  #btn{
-    margin-left: 21px;
-  }
-  #box{
-    width: 310px;
-    margin-left: 11px;
-  }
-  #poster-ratings{
-    margin-left: 25px;
-  }
-}
-
-@media (max-width:200px)
-{
-  img{
-    height: 208px;
-    width: 238px; 
-  }
-  #poster-ratings{
-    padding: 10px;
-    font-size: 0.9rem;
-    width: 233px;
-    margin-left: 83px;
-
-  }
-  #box{
-    width: 132%;
-    margin-left: 8px;
-  }
-  #line{
-
-  }
-  #text{
-    width: 245px;
-    margin-left: 98px;
-
-  }
-  #btn{
-margin-left: 83px;
-  }
-}
-
-</style>
+    @media (max-width: 480px) {
+      #text {
+        font-size: 1rem;
+      }
+      #poster-ratings {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
 <body>
-    <div id="line"><marquee behavior="" direction=""><h1>KNOW YOUR MOVIE</h1></marquee></div>
-    <div class="sbox">
-    <input type="text" name="" id="text" placeholder="Enter movie name"> <br>
-    <button id="btn">click</button>
-    </div>
-    <div id="box">
-    <div  id="content">
-      <span id="title">----</span>
-       <span id="year">----</span>
-       <span id="rated">----</span>
-       <span id="release">----</span>
-       <span id="runtime">----</span>
-       <span id="genre">----</span>
-       <span id="director">----</span>
-       <span id="writer">----</span>
-       <span id="actor">----</span>
-       <span id="language">----</span>
-       <span id="plot">----</span>
-       </div>
-    <div style="" id="wallpaper"></div>
-    </div>
-    
-    <div id="poster-ratings">
-<span id="imdb">----</span>
-<span id="meta">----</span>
-<span id="boxoffice">----</span>
-<span id="awards">----</span>
-    </div>
-<script>
+  <div id="line">
+    <marquee><h1>KNOW YOUR MOVIE</h1></marquee>
+  </div>
 
-   document.getElementById("btn").addEventListener("click", () => {
-  document.getElementById("box").style.backgroundColor = "rgba(75, 68, 59, 0.687)";
-  const read_movie = document.getElementById("text").value;
-  fetch(`https://www.omdbapi.com/?t=${read_movie}&apikey=7302eefe`)
-    .then(res => res.json())
-    .then(data => {
-      console.log(data);
-      document.getElementById("title").innerHTML = `Title of the movie is : ${data.Title}`;
-      document.getElementById("year").innerHTML = `Year of movie released : ${data.Year}`;
-      document.getElementById("rated").innerHTML = `Age ratings : ${data.Rated}`;
-      document.getElementById("release").innerHTML = `Movie released in : ${data.Released}`;
-      document.getElementById("runtime").innerHTML = `Runtime of the movie : ${data.Runtime}`;
-      document.getElementById("genre").innerHTML = `Genre of the movie : ${data.Genre}`;
-      document.getElementById("director").innerHTML = `Director of the movie : ${data.Director}`;
-      document.getElementById("writer").innerHTML = `Writer of the movie : ${data.Writer}`;
-      document.getElementById("actor").innerHTML = `Lead actors : ${data.Actors}`;
-      document.getElementById("language").innerHTML = `Language : ${data.Language}`;
-      document.getElementById("plot").innerHTML = `Main plot of the movie : ${data.Plot}`;
-      document.getElementById("imdb").innerHTML = `Ratings on imdb : ${data.imdbRating}`;
-      document.getElementById("meta").innerHTML = `Metascore : ${data.Metascore}`;
-      document.getElementById("boxoffice").innerHTML = `Boxoffice collection(Approx) : ${data.BoxOffice}`;
-      document.getElementById("awards").innerHTML = `Awards : ${data.Awards}`;
-      document.getElementById("wallpaper").innerHTML = `<img src="${data.Poster}" alt="Movie Poster">`;
-    })
-    .catch(error =>{
-   document.getElementById("box").innerHTML = `Error: ${error}`;
-    })
-});
-</script>
+  <div class="sbox">
+    <input type="text" id="text" placeholder="Enter movie name">
+    <button id="btn">Click</button>
+  </div>
+
+  <div id="box">
+    <div id="content">
+      <span id="title">----</span>
+      <span id="year">----</span>
+      <span id="rated">----</span>
+      <span id="release">----</span>
+      <span id="runtime">----</span>
+      <span id="genre">----</span>
+      <span id="director">----</span>
+      <span id="writer">----</span>
+      <span id="actor">----</span>
+      <span id="language">----</span>
+      <span id="plot">----</span>
+    </div>
+    <div id="wallpaper"></div>
+  </div>
+
+  <div id="poster-ratings">
+    <span id="imdb">----</span>
+    <span id="meta">----</span>
+    <span id="boxoffice">----</span>
+    <span id="awards">----</span>
+  </div>
+
+  <script>
+    document.getElementById("btn").addEventListener("click", () => {
+      const read_movie = document.getElementById("text").value.trim();
+      if (!read_movie) {
+        alert("Please enter a movie name!");
+        return;
+      }
+
+      fetch(`https://www.omdbapi.com/?t=${read_movie}&apikey=7302eefe`)
+        .then(res => res.json())
+        .then(data => {
+          if (data.Response === "False") {
+            document.getElementById("box").innerHTML = `<p>Movie not found!</p>`;
+            return;
+          }
+          document.getElementById("title").innerHTML = `Title: ${data.Title}`;
+          document.getElementById("year").innerHTML = `Year: ${data.Year}`;
+          document.getElementById("rated").innerHTML = `Rated: ${data.Rated}`;
+          document.getElementById("release").innerHTML = `Released: ${data.Released}`;
+          document.getElementById("runtime").innerHTML = `Runtime: ${data.Runtime}`;
+          document.getElementById("genre").innerHTML = `Genre: ${data.Genre}`;
+          document.getElementById("director").innerHTML = `Director: ${data.Director}`;
+          document.getElementById("writer").innerHTML = `Writer: ${data.Writer}`;
+          document.getElementById("actor").innerHTML = `Actors: ${data.Actors}`;
+          document.getElementById("language").innerHTML = `Language: ${data.Language}`;
+          document.getElementById("plot").innerHTML = `Plot: ${data.Plot}`;
+          document.getElementById("imdb").innerHTML = `IMDB Rating: ${data.imdbRating}`;
+          document.getElementById("meta").innerHTML = `Metascore: ${data.Metascore}`;
+          document.getElementById("boxoffice").innerHTML = `Box Office: ${data.BoxOffice}`;
+          document.getElementById("awards").innerHTML = `Awards: ${data.Awards}`;
+          document.getElementById("wallpaper").innerHTML = `<img src="${data.Poster}" alt="Movie Poster">`;
+        })
+        .catch(error => {
+          document.getElementById("box").innerHTML = `<p>Error: ${error}</p>`;
+        });
+    });
+  </script>
+</body>
+</html>
